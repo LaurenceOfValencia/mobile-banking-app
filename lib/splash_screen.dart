@@ -1,3 +1,5 @@
+import 'dart:async';
+import 'package:mobile_banking_app/authentication_screen.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -9,25 +11,43 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
+  void initState() {
+    super.initState();
+    Timer(
+        const Duration(seconds: 5),
+        () => Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const AuthenticationScreen())));
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Container(
-        decoration: const BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft,
-                colors: <Color>[
-              Color(0xff3e3e65),
-              Color(0xff1b3a4b),
-            ])),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Image.asset(
-              'assets/images/splash_icon.png',
-              width: 200,
+    return Scaffold(
+      body: Center(
+        child: Stack(
+          children: [
+            Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topRight,
+                  end: Alignment.bottomLeft,
+                  colors: <Color>[
+                    Color(0xff3e3e65),
+                    Color(0xff1b3a4b),
+                  ],
+                ),
+              ),
+              child: Center(
+                child: Image.asset(
+                  'assets/images/splash_icon.png',
+                  width: 200,
+                ),
+              ),
             ),
-            const Text('placeholder')
           ],
-        ));
+        ),
+      ),
+    );
   }
 }
