@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_banking_app/login_screen.dart';
 import 'package:mobile_banking_app/splash_screen.dart';
 
 void main() {
@@ -23,9 +24,11 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+        
+        primarySwatch: Colors.yellow,
+        canvasColor: Color(0xff000814),
       ),
-      home: const SplashScreen(),
+      home: const LoginScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
