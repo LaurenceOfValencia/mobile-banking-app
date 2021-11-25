@@ -1,3 +1,5 @@
+import 'dart:async';
+import 'package:mobile_banking_app/authentication_screen.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -8,6 +10,17 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Timer(
+        const Duration(seconds: 5),
+        () => Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const AuthenticationScreen())));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
