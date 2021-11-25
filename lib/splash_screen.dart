@@ -28,6 +28,9 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
             const Text('placeholder')
           ],
-        ));
+          ),
+        ),
+      ),
+    );
   }
 }
