@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:mobile_banking_app/login_screen.dart';
 import 'package:mobile_banking_app/splash_screen.dart';
 import 'package:mobile_banking_app/main.dart';
 
@@ -27,10 +28,14 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                 color: Colors.yellow,
                 size: 25,
               ),
-              onPressed: () {},
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => LoginScreen()),
+              ),
               label: const Text('Login'),
               style: ElevatedButton.styleFrom(
                   primary: const Color(0xFF003566),
+                  onPrimary: Colors.white,
                   shape: new RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(5.0),
                   )),
@@ -45,6 +50,7 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
               label: const Text('QR Code Scanner'),
               style: ElevatedButton.styleFrom(
                   primary: const Color(0xFF003566),
+                  onPrimary: Colors.white,
                   shape: new RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(5.0),
                   )),
