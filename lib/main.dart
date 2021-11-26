@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_banking_app/services_screen.dart';
-
+import 'package:mobile_banking_app/login_screen.dart';
+import 'package:mobile_banking_app/splash_screen.dart';
+import 'package:mobile_banking_app/transfer_money_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,10 +28,9 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
         primarySwatch: Colors.yellow,
-        canvasColor: const Color(0xff000814),
+        canvasColor: Color(0xff000814),
       ),
-      home: const ServicesScreen(),
-
+      home: TransferMoneyScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
