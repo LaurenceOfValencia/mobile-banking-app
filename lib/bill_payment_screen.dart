@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_banking_app/billing_screen.dart';
+import 'package:mobile_banking_app/services_screen.dart';
 import 'package:mobile_banking_app/splash_screen.dart';
 
 import 'dashboard.dart';
@@ -21,94 +23,86 @@ class _BillPaymentScreenState extends State<BillPaymentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Text(widget.merchantName,style: const TextStyle(color: Color(0xffffffff), fontSize: 50),),
+        appBar: AppBar(
+            backgroundColor: Color(0xFF000814),
+            title: Text(
+              'Confirm',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Color(0xffFFC300),
+              ),
+            ),
+            leading: Builder(
+              builder: (BuildContext context) {
+                return IconButton(
+                  icon: const Icon(
+                    Icons.arrow_back,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ServicesScreen(balance)),
+                    );
+                  }, //link back to prev page
+                );
+              },
+            )),
+        body: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Text(
+                widget.merchantName,
+                style: const TextStyle(color: Color(0xffffffff), fontSize: 40),
+              ),
+            ),
             TextField(
               maxLength: 12,
               controller: accountNumController,
               decoration: InputDecoration(
-              border: InputBorder.none,
-              filled: true,
-              fillColor: const Color(0xbb555555),
-              labelText: "Account Number",
-              labelStyle: const TextStyle(color: Color(0xffffd60a))
+                  border: InputBorder.none,
+                  filled: true,
+                  fillColor: const Color(0xbb555555),
+                  labelText: "Account Number",
+                  labelStyle: const TextStyle(color: Color(0xffffd60a))),
+              style: const TextStyle(
+                color: Color(0xffffffff),
+              ),
             ),
-            style: const TextStyle(
-              color: Color(0xffffffff),
-            ),
-          ),
-
-          TextField(
+            TextField(
               controller: accountNameController,
               decoration: InputDecoration(
-              border: InputBorder.none,
-              filled: true,
-              fillColor: Color(0xbb555555),
-              labelText: "Account Name",
-              labelStyle: TextStyle(color: Color(0xffffd60a))
+                  border: InputBorder.none,
+                  filled: true,
+                  fillColor: Color(0xbb555555),
+                  labelText: "Account Name",
+                  labelStyle: TextStyle(color: Color(0xffffd60a))),
+              style: TextStyle(
+                color: Color(0xffffffff),
+              ),
             ),
-            style: TextStyle(
-              color: Color(0xffffffff),
-            ),
-          ),
-
-         TextField(
+            TextField(
               controller: amountController,
               decoration: InputDecoration(
-              border: InputBorder.none,
-              filled: true,
-              fillColor: Color(0xbb555555),
-              labelText: "Amount to Pay",
-              labelStyle: TextStyle(color: const Color(0xffffd60a))
+                  border: InputBorder.none,
+                  filled: true,
+                  fillColor: Color(0xbb555555),
+                  labelText: "Amount to Pay",
+                  labelStyle: TextStyle(color: const Color(0xffffd60a))),
+              style: TextStyle(
+                color: const Color(0xffffffff),
+              ),
             ),
-            style: TextStyle(
-              color: const Color(0xffffffff),
-            ),
-          ),
-          
-          ElevatedButton(onPressed: (){
-            if(double.parse(amountController.text)<= balance[0]+balance[1]) //checks if amount is smaller than balance
-            {
-              if (accountNumController.text.length == 12) //checks is account number is exactly 12 characters
-              {
-                if(accountNameController.text.length > 0) 
-                {
-                  if(true)//admin1 card is chosen
-                  {
-                    double diff = balance[0] - double.parse(amountController.text);
-                    balance[0] = diff;
-                    balance[2] = double.parse(amountController.text);
-                  }
-                  else//admin2 card is chosen
-                  {
-                    double diff = balance[1] - double.parse(amountController.text);
-                    balance[1] = diff;
-                    balance[2] = double.parse(amountController.text);
-                  }
-                  Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => Dashboard(balance)));
-                }
-                else 
-                {
-                  //snackbar about blank name
-                }
-              }
-              else
-              {
-                //snack bar about not enough characters
-              }
-            }
-            else
-            {
-              //insert snack bar
-            }
-    
-
-          }, child: const Text("Confirm"))
-        ],
-      )
-    );
+            ElevatedButton(
+                onPressed: () {
+                  if (int.parse(amountController.text) >
+                      balance[0] + balance[1]) {
+                  } else {}
+                },
+                child: const Text("Confirm"))
+          ],
+        ));
   }
 }
