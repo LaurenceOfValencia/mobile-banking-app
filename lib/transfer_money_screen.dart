@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mobile_banking_app/transfer_money_success_page.dart';
 
 class TransferMoneyScreen extends StatelessWidget {
   const TransferMoneyScreen({Key? key}) : super(key: key);
@@ -9,17 +10,24 @@ class TransferMoneyScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text(
-            'Transfer Money',
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w900),
-          ),
-          elevation: 0,
-          backgroundColor: Color(0xff000814),
-          leading: Icon(
-            Icons.arrow_back,
-            color: Colors.white,
-          ),
-        ),
+            title: Text(
+              "Transfer Money",
+              style:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.w900),
+            ),
+            elevation: 0,
+            backgroundColor: Color(0xff000814),
+            leading: Builder(
+              builder: (BuildContext context) {
+                return IconButton(
+                  icon: const Icon(
+                    Icons.arrow_back,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {}, //link back to prev page
+                );
+              },
+            )),
         body: SingleChildScrollView(
           child: Container(
             child: Column(
@@ -174,7 +182,13 @@ class TransferMoneyScreen extends StatelessWidget {
                   ),
                 ),
 
-                ElevatedButton(onPressed: () {}, child: Text('Proceed'))
+                ElevatedButton(
+                  onPressed: () => Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const TransferMoneySuccess())),
+                  child: Text('Proceed'),
+                ),
               ],
             ),
           ),

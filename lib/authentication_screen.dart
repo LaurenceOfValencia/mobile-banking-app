@@ -3,8 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:mobile_banking_app/login_screen.dart';
-import 'package:mobile_banking_app/splash_screen.dart';
-import 'package:mobile_banking_app/main.dart';
 
 class AuthenticationScreen extends StatefulWidget {
   const AuthenticationScreen({Key? key}) : super(key: key);
@@ -47,7 +45,9 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                 size: 25,
               ),
               onPressed: () {
+                // ignore: prefer_const_constructors
                 final snackBar = SnackBar(
+                    // ignore: prefer_const_constructors
                     content: Text(
                         "This functionality is not available for this demo"));
                 ScaffoldMessenger.of(context).showSnackBar(snackBar);
