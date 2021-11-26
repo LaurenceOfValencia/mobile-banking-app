@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:mobile_banking_app/accounts.dart';
+import 'package:mobile_banking_app/authentication_screen.dart';
+import 'package:mobile_banking_app/dashboard.dart';
 import 'package:mobile_banking_app/splash_screen.dart';
 
 TextEditingController usernameController = TextEditingController();
@@ -69,7 +71,7 @@ class LoginScreen extends StatelessWidget {
                       {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => SplashScreen()),
+                          MaterialPageRoute(builder: (context) => Dashboard()),
                         );
                       }
                       else
@@ -96,7 +98,7 @@ class LoginScreen extends StatelessWidget {
                     onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => SplashScreen()),
+                          MaterialPageRoute(builder: (context) => AuthenticationScreen()),
                         );
                       },
                     child: Text("Cancel"),

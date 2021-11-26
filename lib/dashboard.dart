@@ -167,7 +167,8 @@ class _DashboardState extends State<Dashboard> {
               height: 120,
               padding: const EdgeInsets.symmetric(vertical: 20),
               child: ElevatedButton(
-                onPressed: (){}, 
+                onPressed: (){const snackBar = SnackBar(content: Text("This functionality is not available for this demo"));
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);}, 
                 child: Padding(
                   padding: const EdgeInsets.all(30.0),
                   child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: const [
