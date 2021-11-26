@@ -60,12 +60,8 @@ flutter:
   uses-material-design: true
   
   assets:
-    - assets/images/splash_icon.png
-    - assets/images/mastercard.png
-    - assets/images/contact_less.png
+    - assets/images/
 
-
-  
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
