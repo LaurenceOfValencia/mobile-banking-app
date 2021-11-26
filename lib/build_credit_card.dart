@@ -10,15 +10,15 @@ class BuildCreditCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             _buildCreditCard(
-                color: Color(0xFF090943),
+                color: const Color(0xFF090943),
                 cardExpiration: "08/2022",
                 cardHolder: "HOUSSEM SELMI",
                 cardNumber: "3546 7532 XXXX 9742"),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             _buildCreditCard(
-                color: Color(0xFF000000),
+                color: const Color(0xFF000000),
                 cardExpiration: "05/2024",
                 cardHolder: "HOUSSEM SELMI",
                 cardNumber: "9874 4785 XXXX 6548"),
@@ -28,27 +28,6 @@ class BuildCreditCard extends StatelessWidget {
     );
   }
 
-  Column _buildTitleSection({@required title, @required subTitle}) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.only(left: 8.0, top: 16.0),
-          child: Text(
-            '$title',
-            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 8.0, bottom: 16.0),
-          child: Text(
-            '$subTitle',
-            style: TextStyle(fontSize: 21, color: Colors.black45),
-          ),
-        )
-      ],
-    );
-  }
 
   // Build the credit card widget
   Card _buildCreditCard(
@@ -74,7 +53,7 @@ class BuildCreditCard extends StatelessWidget {
               padding: const EdgeInsets.only(top: 16.0),
               child: Text(
                 '$cardNumber',
-                style: TextStyle(
+                style: const TextStyle(
                     color: Colors.white,
                     fontSize: 21,
                     fontFamily: 'CourrierPrime'),
@@ -123,12 +102,12 @@ class BuildCreditCard extends StatelessWidget {
       children: <Widget>[
         Text(
           '$label',
-          style: TextStyle(
+          style: const TextStyle(
               color: Colors.grey, fontSize: 9, fontWeight: FontWeight.bold),
         ),
         Text(
           '$value',
-          style: TextStyle(
+          style: const TextStyle(
               color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
         )
       ],
@@ -136,22 +115,4 @@ class BuildCreditCard extends StatelessWidget {
   }
 
 // Build the FloatingActionButton
-  Container _buildAddCardButton({
-    @required Icon? icon,
-    @required Color? color,
-  }) {
-    return Container(
-      margin: const EdgeInsets.only(top: 24.0),
-      alignment: Alignment.center,
-      child: FloatingActionButton(
-        elevation: 2.0,
-        onPressed: () {
-          print("Add a credit card");
-        },
-        backgroundColor: color,
-        mini: false,
-        child: icon,
-      ),
-    );
-  }
 }

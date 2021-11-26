@@ -1,15 +1,15 @@
-import 'dart:async';
+
+// ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:mobile_banking_app/accounts.dart';
 import 'package:mobile_banking_app/login_screen.dart';
 import 'package:mobile_banking_app/services_screen.dart';
 import 'package:mobile_banking_app/transfer_money_screen.dart';
 
 
 class Dashboard extends StatefulWidget {
-  List<String> account;
-  Dashboard(this.account, BuildContext context, { Key? key }) : super(key: key);
+  List<int> balance;
+  Dashboard(this.balance, { Key? key }) : super(key: key);
 
   @override
   _DashboardState createState() => _DashboardState();
@@ -29,16 +29,10 @@ class _DashboardState extends State<Dashboard> {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  // ignore: avoid_unnecessary_containers
-                  Container(
-                    child: Text("Good day " + widget.account[0] + ",\nWelcome Back!",
-                      style: const TextStyle(color: Colors.white, fontSize: 18),),
-                  ),
-                  // ignore: avoid_unnecessary_containers
-                  Container(
-                    child: IconButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginScreen()),
-                    );}, icon: const Icon(Icons.logout, color: Color(0xffffffff),)),
-                  ),
+                  const Text("Good day Admin,\nWelcome Back!",
+                    style: TextStyle(color: Colors.white, fontSize: 18),),
+                  IconButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen(widget.balance)),
+                  );}, icon: const Icon(Icons.logout, color: Color(0xffffffff),)),
                 ]
               ),
             ),
@@ -54,7 +48,7 @@ class _DashboardState extends State<Dashboard> {
                       padding: const EdgeInsets.only(top: 15.0),
                       child: RichText(text: TextSpan(text: "Total Balance:\n", style: const TextStyle(fontSize: 13, color: Color(0x77ffffff)),
                         children: <TextSpan>[
-                          TextSpan(text: "Php "+ widget.account[2], style: const TextStyle(fontSize: 25, color: Colors.white,)),
+                          TextSpan(text: "Php "+ (widget.balance[0]+widget.balance[1]).toString(), style: const TextStyle(fontSize: 25, color: Colors.white,)),
                         ])),
                     ),
                     decoration: const BoxDecoration(
@@ -76,7 +70,7 @@ class _DashboardState extends State<Dashboard> {
                       padding: const EdgeInsets.only(top: 15.0),
                       child: RichText(text: TextSpan(text: "Expenditure Report:\n", style: const TextStyle(fontSize: 13, color: Color(0x77ffffff)),
                         children: <TextSpan>[
-                          TextSpan(text: "Php "+ widget.account[3], style: const TextStyle(fontSize: 25, color: Colors.white),),
+                          TextSpan(text: "Php "+ widget.balance[2].toString(), style: const TextStyle(fontSize: 25, color: Colors.white),),
                         ])),
                     ),
                     decoration: const BoxDecoration(
@@ -99,7 +93,7 @@ class _DashboardState extends State<Dashboard> {
                         shape: CircleBorder(),
                       ),
                       // ignore: avoid_print
-                      child: IconButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => const TransferMoneyScreen()),
+                      child: IconButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => TransferMoneyScreen(widget.balance, context)),
                     );}, icon: const Icon(Icons.swap_horiz), tooltip: "Tranfer Money",),
                     ),
                   ),
@@ -109,7 +103,7 @@ class _DashboardState extends State<Dashboard> {
                         color: Color(0xffffd60a),
                         shape: CircleBorder(),
                       ),
-                      child: IconButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => const ServicesScreen()),
+                      child: IconButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => ServicesScreen(widget.balance)),
                     );}, icon: const Icon(Icons.receipt_long), tooltip: "Pay Bills",),
                     ),
                   ),

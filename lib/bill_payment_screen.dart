@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_banking_app/splash_screen.dart';
 
 // ignore: must_be_immutable
 class BillPaymentScreen extends StatefulWidget {
   String merchantName;
-  BillPaymentScreen(this.merchantName, BuildContext context, { Key? key }) : super(key: key);
+  List<int> balance;
+  BillPaymentScreen(this.merchantName, this.balance,{ Key? key }) : super(key: key);
 
   @override
   _BillPaymentScreenState createState() => _BillPaymentScreenState();
 }
+
+TextEditingController accountNumController = TextEditingController();
+TextEditingController accountNameController = TextEditingController();
+TextEditingController amountController = TextEditingController();
 
 class _BillPaymentScreenState extends State<BillPaymentScreen> {
   @override
@@ -16,20 +22,23 @@ class _BillPaymentScreenState extends State<BillPaymentScreen> {
       body: Column(
         children: [
           Text(widget.merchantName,style: const TextStyle(color: Color(0xffffffff), fontSize: 50),),
-          const TextField(
+            TextField(
+              maxLength: 12,
+              controller: accountNumController,
               decoration: InputDecoration(
               border: InputBorder.none,
               filled: true,
-              fillColor: Color(0xbb555555),
+              fillColor: const Color(0xbb555555),
               labelText: "Account Number",
-              labelStyle: TextStyle(color: Color(0xffffd60a))
+              labelStyle: const TextStyle(color: Color(0xffffd60a))
             ),
-            style: TextStyle(
+            style: const TextStyle(
               color: Color(0xffffffff),
             ),
           ),
 
-          const TextField(
+          TextField(
+              controller: accountNameController,
               decoration: InputDecoration(
               border: InputBorder.none,
               filled: true,
@@ -42,20 +51,31 @@ class _BillPaymentScreenState extends State<BillPaymentScreen> {
             ),
           ),
 
-          const TextField(
+         TextField(
+              controller: amountController,
               decoration: InputDecoration(
               border: InputBorder.none,
               filled: true,
               fillColor: Color(0xbb555555),
               labelText: "Amount to Pay",
-              labelStyle: TextStyle(color: Color(0xffffd60a))
+              labelStyle: TextStyle(color: const Color(0xffffd60a))
             ),
             style: TextStyle(
-              color: Color(0xffffffff),
+              color: const Color(0xffffffff),
             ),
           ),
           
-          ElevatedButton(onPressed: (){}, child: const Text("Confirm"))
+          ElevatedButton(onPressed: (){
+            if(int.parse(amountController.text)> balance[0]+balance[1])
+            {
+
+            }
+            else
+            {
+
+            }
+
+          }, child: const Text("Confirm"))
         ],
       )
     );

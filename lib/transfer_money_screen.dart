@@ -3,20 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:mobile_banking_app/transfer_money_success_page.dart';
 
 class TransferMoneyScreen extends StatelessWidget {
-  const TransferMoneyScreen({Key? key}) : super(key: key);
+  const TransferMoneyScreen(List<int> balance, BuildContext context, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-            title: Text(
+            title: const Text(
               "Transfer Money",
               style:
                   TextStyle(color: Colors.white, fontWeight: FontWeight.w900),
             ),
             elevation: 0,
-            backgroundColor: Color(0xff000814),
+            backgroundColor: const Color(0xff000814),
             leading: Builder(
               builder: (BuildContext context) {
                 return IconButton(
@@ -29,168 +29,167 @@ class TransferMoneyScreen extends StatelessWidget {
               },
             )),
         body: SingleChildScrollView(
-          child: Container(
-            child: Column(
-              // ignore: prefer_const_literals_to_create_immutables
-              children: [
-                Row(
-                  children: const <Widget>[
-                    Padding(
-                      padding: EdgeInsets.all(20),
-                      child: Text(
-                        'Step 1 of 3',
-                        style: TextStyle(
-                          color: Color(0xFFFFD60A),
-                          fontSize: 20,
-                          fontWeight: FontWeight.w700,
-                        ),
+          child: Column(
+            // ignore: prefer_const_literals_to_create_immutables
+            children: [
+              Row(
+                children: const <Widget>[
+                  Padding(
+                    padding: EdgeInsets.all(20),
+                    child: Text(
+                      'Step 1 of 3',
+                      style: TextStyle(
+                        color: Color(0xFFFFD60A),
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 2,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 2,
+                    ),
+                    child: Text(
+                      'Fill in the Details',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.normal,
                       ),
+                    ),
+                  )
+                ],
+              ),
+              Column(
+                children: const <Widget>[
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 5, horizontal: 20),
                       child: Text(
-                        'Fill in the Details',
+                        'Transfer from :',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 15,
-                          fontWeight: FontWeight.normal,
                         ),
                       ),
-                    )
-                  ],
-                ),
-                Column(
-                  children: const <Widget>[
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Padding(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-                        child: Text(
-                          'Transfer from :',
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Container(
-                  height: 200,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      _buildCreditCard(
-                          color: Color(0xFF090943),
-                          cardExpiration: "08/2022",
-                          cardHolder: "Admin1",
-                          cardNumber: "XXXX XXXX XXXX 9742"),
-                      _buildCreditCard(
-                          color: Color(0xFF000000),
-                          cardExpiration: "08/2022",
-                          cardHolder: "Admin2",
-                          cardNumber: "XXXX XXXX XXXX 1373"),
-                    ],
-                  ),
-                ),
-                const Divider(
-                  color: Color(0xFFFFD60A),
-                  indent: 20,
-                  endIndent: 20,
-                ),
-                // ignore: prefer_const_constructors
-                Column(
-                  children: const <Widget>[
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Padding(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-                        child: Text(
-                          'Transfer Amount',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: const <Widget>[
-                    Flexible(
-                      child: Padding(
-                        padding: EdgeInsets.all(10),
-                        child: TextField(
-                          cursorColor: Color(0xff003566),
-                          decoration: InputDecoration(
-                            labelText: 'Amount',
-                            labelStyle: TextStyle(color: Color(0xFF003566)),
-                            fillColor: Colors.white,
-                            filled: true,
-                            contentPadding: EdgeInsets.all(10),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Flexible(
-                      child: Padding(
-                        padding: EdgeInsets.all(10),
-                        child: TextField(
-                          cursorColor: Color(0xff003566),
-                          decoration: InputDecoration(
-                            labelText: 'Currency',
-                            labelStyle: TextStyle(color: Color(0xFF003566)),
-                            fillColor: Colors.white,
-                            filled: true,
-                            contentPadding: EdgeInsets.all(10),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Column(
-                  children: const <Widget>[
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Padding(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-                        child: Text(
-                          'Send to',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-                // ignore: prefer_const_constructors
-                Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: const TextField(
-                    cursorColor: Color(0xff003566),
-                    decoration: InputDecoration(
-                      labelText: 'Account Number',
-                      labelStyle: TextStyle(color: Color(0xFF003566)),
-                      fillColor: Colors.white,
-                      filled: true,
-                      contentPadding: EdgeInsets.all(10),
                     ),
                   ),
+                ],
+              ),
+              SizedBox(
+                height: 200,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    _buildCreditCard(
+                        color: const Color(0xFF090943),
+                        cardExpiration: "08/2022",
+                        cardHolder: "Admin1",
+                        cardNumber: "XXXX XXXX XXXX 9742"),
+                    _buildCreditCard(
+                        color: const Color(0xFF000000),
+                        cardExpiration: "08/2022",
+                        cardHolder: "Admin2",
+                        cardNumber: "XXXX XXXX XXXX 1373"),
+                  ],
                 ),
+              ),
+              const Divider(
+                color: Color(0xFFFFD60A),
+                indent: 20,
+                endIndent: 20,
+              ),
+              // ignore: prefer_const_constructors
+              Column(
+                children: const <Widget>[
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                      child: Text(
+                        'Transfer Amount',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: const <Widget>[
+                  Flexible(
+                    child: Padding(
+                      padding: EdgeInsets.all(10),
+                      child: TextField(
+                        cursorColor: Color(0xff003566),
+                        decoration: InputDecoration(
+                          labelText: 'Amount',
+                          labelStyle: TextStyle(color: Color(0xFF003566)),
+                          fillColor: Colors.white,
+                          filled: true,
+                          contentPadding: EdgeInsets.all(10),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Flexible(
+                    child: Padding(
+                      padding: EdgeInsets.all(10),
+                      child: TextField(
+                        cursorColor: Color(0xff003566),
+                        decoration: InputDecoration(
+                          labelText: 'Currency',
+                          labelStyle: TextStyle(color: Color(0xFF003566)),
+                          fillColor: Colors.white,
+                          filled: true,
+                          contentPadding: EdgeInsets.all(10),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Column(
+                children: const <Widget>[
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                      child: Text(
+                        'Send to',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              // ignore: prefer_const_constructors
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: const TextField(
+                  cursorColor: Color(0xff003566),
+                  maxLength: 12,
+                  decoration: InputDecoration(
+                    labelText: 'Account Number',
+                    labelStyle: TextStyle(color: Color(0xFF003566)),
+                    fillColor: Colors.white,
+                    filled: true,
+                    contentPadding: EdgeInsets.all(10),
+                  ),
+                ),
+              ),
 
-                ElevatedButton(
-                  onPressed: () => Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const TransferMoneySuccess())),
-                  child: Text('Proceed'),
-                ),
-              ],
-            ),
+              ElevatedButton(
+                onPressed: () => Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const TransferMoneySuccess())),
+                child: const Text('Proceed'),
+              ),
+            ],
           ),
         ),
       ),
@@ -220,7 +219,7 @@ class TransferMoneyScreen extends StatelessWidget {
               padding: const EdgeInsets.only(top: 16.0),
               child: Text(
                 '$cardNumber',
-                style: TextStyle(
+                style: const TextStyle(
                     color: Colors.white,
                     fontSize: 21,
                     fontFamily: 'CourrierPrime'),
@@ -269,12 +268,12 @@ class TransferMoneyScreen extends StatelessWidget {
       children: <Widget>[
         Text(
           '$label',
-          style: TextStyle(
+          style: const TextStyle(
               color: Colors.grey, fontSize: 9, fontWeight: FontWeight.bold),
         ),
         Text(
           '$value',
-          style: TextStyle(
+          style: const TextStyle(
               color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
         )
       ],

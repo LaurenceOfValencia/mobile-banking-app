@@ -1,16 +1,15 @@
-// ignore_for_file: prefer_const_constructors, duplicate_ignore
+// ignore_for_file: prefer_const_constructors, duplicate_ignore, must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:mobile_banking_app/accounts.dart';
 import 'package:mobile_banking_app/authentication_screen.dart';
 import 'package:mobile_banking_app/dashboard.dart';
-import 'package:mobile_banking_app/splash_screen.dart';
 
 TextEditingController usernameController = TextEditingController();
 TextEditingController passwordController = TextEditingController();
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({ Key? key }) : super(key: key);
+  List<int> balance;
+  LoginScreen(this.balance, { Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -65,13 +64,12 @@ class LoginScreen extends StatelessWidget {
                   width: 200,
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: () async{
-                      List<String> account = await getAccount();
-                      if (account[0].compareTo(usernameController.text) == 0 && account[1].compareTo(passwordController.text) == 0)
+                    onPressed: () {
+                      if ("admin".compareTo(usernameController.text) == 0 && "admin".compareTo(passwordController.text) == 0)
                       {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => Dashboard(account, context)),
+                          MaterialPageRoute(builder: (context) => Dashboard(balance)),
                         );
                       }
                       else
@@ -98,7 +96,7 @@ class LoginScreen extends StatelessWidget {
                     onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => AuthenticationScreen()),
+                          MaterialPageRoute(builder: (context) => AuthenticationScreen(balance)),
                         );
                       },
                     child: Text("Cancel"),
