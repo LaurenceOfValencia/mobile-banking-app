@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, duplicate_ignore
 
 import 'package:flutter/material.dart';
 import 'package:mobile_banking_app/accounts.dart';
@@ -14,6 +14,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
+        // ignore: duplicate_ignore, duplicate_ignore
         body: Padding(
           // ignore: prefer_const_constructors
           padding: EdgeInsets.all(40),
@@ -58,7 +59,7 @@ class LoginScreen extends StatelessWidget {
 
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10.0),
-                child: Container(
+                child: SizedBox(
                   width: 200,
                   height: 50,
                   child: ElevatedButton(
@@ -88,7 +89,7 @@ class LoginScreen extends StatelessWidget {
 
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 1.0),
-                child: Container(
+                child: SizedBox(
                   width: 200,
                   height: 50,
                   child: ElevatedButton(
@@ -107,15 +108,13 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
 
-              Container(
-                child: TextButton(
-                  onPressed: () {
-                      final snackBar = SnackBar(content: Text("This functionality is not available for this demo"));
-                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                    }, 
-                  child: Text("Forgot Password?")
-                  ),
-              ),
+              TextButton(
+                onPressed: () {
+                    final snackBar = SnackBar(content: Text("This functionality is not available for this demo"));
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  }, 
+                child: Text("Forgot Password?")
+                ),
             ],
           ),
         ),

@@ -1,8 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+
 import 'package:path_provider/path_provider.dart';
 
 //Future<String> loadAsset() async {
@@ -21,13 +20,13 @@ import 'package:path_provider/path_provider.dart';
     return File('$path/accounts.txt');
   }
 
-Future<File> balanceTransfer(String name) async {
+Future<File> balanceTransfer() async {
   final file = await _localFile;
 
   //String content = await file.readAsString();
 
   // Write the file
-  return file.writeAsString(name);
+  return file.writeAsString("admin admin 10000 0");
 }
 
 
