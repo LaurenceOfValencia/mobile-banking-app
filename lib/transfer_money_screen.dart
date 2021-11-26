@@ -1,9 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mobile_banking_app/splash_screen.dart';
 import 'package:mobile_banking_app/transfer_money_success_page.dart';
 
+import 'dashboard.dart';
+
 class TransferMoneyScreen extends StatelessWidget {
-  const TransferMoneyScreen(List<int> balance, BuildContext context, {Key? key}) : super(key: key);
+  const TransferMoneyScreen(List<int> balance, BuildContext context, {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +28,13 @@ class TransferMoneyScreen extends StatelessWidget {
                     Icons.arrow_back,
                     color: Colors.white,
                   ),
-                  onPressed: () {}, //link back to prev page
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Dashboard(balance)),
+                    );
+                  }, //link back to prev page
                 );
               },
             )),
