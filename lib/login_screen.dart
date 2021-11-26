@@ -71,7 +71,7 @@ class LoginScreen extends StatelessWidget {
                       {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => Dashboard()),
+                          MaterialPageRoute(builder: (context) => Dashboard(account, context)),
                         );
                       }
                       else

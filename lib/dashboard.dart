@@ -4,29 +4,18 @@ import 'package:flutter/material.dart';
 import 'package:mobile_banking_app/accounts.dart';
 import 'package:mobile_banking_app/login_screen.dart';
 import 'package:mobile_banking_app/services_screen.dart';
+import 'package:mobile_banking_app/transfer_money_screen.dart';
 
-List<String> account = [];
-
-void loadAccount() async {
-  account = await getAccount();
-}
 
 class Dashboard extends StatefulWidget {
-  const Dashboard({ Key? key }) : super(key: key);
+  List<String> account;
+  Dashboard(this.account, BuildContext context, { Key? key }) : super(key: key);
 
   @override
   _DashboardState createState() => _DashboardState();
 }
 
 class _DashboardState extends State<Dashboard> {
-  @override
-  void initState() {
-    super.initState();
-    Timer(
-        const Duration(seconds: 0),
-        () => loadAccount());}
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +31,7 @@ class _DashboardState extends State<Dashboard> {
                 children: [
                   // ignore: avoid_unnecessary_containers
                   Container(
-                    child: Text("Good day " + account[0] + ",\nWelcome Back!",
+                    child: Text("Good day " + widget.account[0] + ",\nWelcome Back!",
                       style: const TextStyle(color: Colors.white, fontSize: 18),),
                   ),
                   // ignore: avoid_unnecessary_containers
@@ -65,7 +54,7 @@ class _DashboardState extends State<Dashboard> {
                       padding: const EdgeInsets.only(top: 15.0),
                       child: RichText(text: TextSpan(text: "Total Balance:\n", style: const TextStyle(fontSize: 13, color: Color(0x77ffffff)),
                         children: <TextSpan>[
-                          TextSpan(text: "Php "+ account[2], style: const TextStyle(fontSize: 25, color: Colors.white,)),
+                          TextSpan(text: "Php "+ widget.account[2], style: const TextStyle(fontSize: 25, color: Colors.white,)),
                         ])),
                     ),
                     decoration: const BoxDecoration(
@@ -87,7 +76,7 @@ class _DashboardState extends State<Dashboard> {
                       padding: const EdgeInsets.only(top: 15.0),
                       child: RichText(text: TextSpan(text: "Expenditure Report:\n", style: const TextStyle(fontSize: 13, color: Color(0x77ffffff)),
                         children: <TextSpan>[
-                          TextSpan(text: "Php "+account[3], style: const TextStyle(fontSize: 25, color: Colors.white),),
+                          TextSpan(text: "Php "+ widget.account[3], style: const TextStyle(fontSize: 25, color: Colors.white),),
                         ])),
                     ),
                     decoration: const BoxDecoration(
@@ -110,7 +99,7 @@ class _DashboardState extends State<Dashboard> {
                         shape: CircleBorder(),
                       ),
                       // ignore: avoid_print
-                      child: IconButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => const ServicesScreen()),
+                      child: IconButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => const TransferMoneyScreen()),
                     );}, icon: const Icon(Icons.swap_horiz), tooltip: "Tranfer Money",),
                     ),
                   ),
