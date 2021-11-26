@@ -13,6 +13,7 @@ class Dashboard extends StatefulWidget {
   _DashboardState createState() => _DashboardState();
 }
 
+
 class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
@@ -127,7 +128,7 @@ class _DashboardState extends State<Dashboard> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => TransferMoneyScreen(
-                                    widget.balance, context)),
+                                    widget.balance)),
                           );
                         },
                         icon: const Icon(Icons.swap_horiz),
@@ -194,24 +195,24 @@ class _DashboardState extends State<Dashboard> {
                 ],
               ),
             ),
-            Container(
-              height: 230,
-              width: double.infinity,
-              child: const Padding(
-                padding: EdgeInsets.all(30.0),
-                child: Text(
-                  "Debit",
-                  style: TextStyle(color: Colors.white, fontSize: 30),
-                ),
+             SizedBox(
+                height: 200,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    _buildCreditCard(
+                        color: const Color(0xFFffa047),
+                      cardExpiration: "08/2022",
+                      cardHolder: "Admin1",
+                      cardNumber: "XXXX XXXX XXXX 9742"),
+                  _buildCreditCard(
+                      color: const Color(0xFF0029f5),
+                      cardExpiration: "08/2022",
+                      cardHolder: "Admin2",
+                      cardNumber: "XXXX XXXX XXXX 1373"),
+                ],
               ),
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage("assets/images/visa.png"),
-                    fit: BoxFit.fill),
-                borderRadius: BorderRadius.all(Radius.circular(40)),
-                color: Color(0xff003566),
               ),
-            ),
             Container(
               height: 120,
               padding: const EdgeInsets.symmetric(vertical: 20),
@@ -252,3 +253,88 @@ class _DashboardState extends State<Dashboard> {
     );
   }
 }
+
+Card _buildCreditCard(
+      {@required Color? color,
+      @required String? cardNumber,
+      @required String? cardHolder,
+      @required String? cardExpiration}) {
+    return Card(
+      elevation: 4.0,
+      color: color,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(14),
+      ),
+      child: Container(
+        height: 200,
+        padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 22.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            _buildLogosBlock(),
+            Padding(
+              padding: const EdgeInsets.only(top: 16.0),
+              child: Text(
+                '$cardNumber',
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 21,
+                    fontFamily: 'CourrierPrime'),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                _buildDetailsBlock(
+                  label: 'CARDHOLDER',
+                  value: cardHolder,
+                ),
+                _buildDetailsBlock(label: 'VALID THRU', value: cardExpiration),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  // Build the top row containing logos
+  Row _buildLogosBlock() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        Image.asset(
+          "assets/images/contact_less.png",
+          height: 20,
+          width: 18,
+        ),
+        Image.asset(
+          "assets/images/mastercard.png",
+          height: 50,
+          width: 50,
+        ),
+      ],
+    );
+  }
+
+// Build Column containing the cardholder and expiration information
+  Column _buildDetailsBlock(
+      {@required String? label, @required String? value}) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          '$label',
+          style: const TextStyle(
+              color: Colors.grey, fontSize: 9, fontWeight: FontWeight.bold),
+        ),
+        Text(
+          '$value',
+          style: const TextStyle(
+              color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
+        )
+      ],
+    );
+  }
+

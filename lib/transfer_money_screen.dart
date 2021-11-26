@@ -6,7 +6,8 @@ import 'package:mobile_banking_app/transfer_money_success_page.dart';
 import 'dashboard.dart';
 
 class TransferMoneyScreen extends StatelessWidget {
-  const TransferMoneyScreen(List<int> balance, BuildContext context, {Key? key})
+  List<int> balance;
+  TransferMoneyScreen(this.balance, {Key? key})
       : super(key: key);
 
   @override
@@ -93,12 +94,12 @@ class TransferMoneyScreen extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   children: [
                     _buildCreditCard(
-                        color: const Color(0xFF090943),
+                        color: const Color(0xFFffa047),
                         cardExpiration: "08/2022",
                         cardHolder: "Admin1",
                         cardNumber: "XXXX XXXX XXXX 9742"),
                     _buildCreditCard(
-                        color: const Color(0xFF000000),
+                        color: const Color(0xFF0029f5),
                         cardExpiration: "08/2022",
                         cardHolder: "Admin2",
                         cardNumber: "XXXX XXXX XXXX 1373"),
