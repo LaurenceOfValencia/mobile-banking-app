@@ -38,5 +38,11 @@ Future<String> getFile() async {
 Future<List<String>> getAccount() async {
   List<String> accounts = (await getFile()).split(" ");
 
+  if (accounts.isEmpty)
+  {
+       balanceTransfer();
+       List<String> accounts = (await getFile()).split(" ");
+  }
+
   return accounts;
 }

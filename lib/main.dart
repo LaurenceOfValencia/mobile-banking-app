@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_banking_app/services_screen.dart';
 import 'package:mobile_banking_app/splash_screen.dart';
+import 'package:mobile_banking_app/transfer_money_screen.dart';
 
 
 void main() {
