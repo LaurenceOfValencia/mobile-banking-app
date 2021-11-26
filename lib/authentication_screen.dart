@@ -46,7 +46,12 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                 color: Colors.yellow,
                 size: 25,
               ),
-              onPressed: () {},
+              onPressed: () {
+                final snackBar = SnackBar(
+                    content: Text(
+                        "This functionality is not available for this demo"));
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              },
               label: const Text('QR Code Scanner'),
               style: ElevatedButton.styleFrom(
                   primary: const Color(0xFF003566),
