@@ -2,13 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:mobile_banking_app/accounts.dart';
+import 'package:mobile_banking_app/authentication_screen.dart';
 import 'package:mobile_banking_app/splash_screen.dart';
 
 TextEditingController usernameController = TextEditingController();
 TextEditingController passwordController = TextEditingController();
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({ Key? key }) : super(key: key);
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,34 +27,32 @@ class LoginScreen extends StatelessWidget {
                   'assets/images/splash_icon.png',
                 ),
               ),
-              TextField(
-                controller: usernameController,
-                decoration: InputDecoration(
+            ),
+            TextField(
+              controller: usernameController,
+              decoration: InputDecoration(
                   border: InputBorder.none,
                   filled: true,
                   fillColor: Color(0xbb555555),
                   labelText: "Username",
-                  labelStyle: TextStyle(color: Color(0xffffd60a))
-                ),
-                style: TextStyle(
-                  color: Color(0xffffffff),
-                ),
+                  labelStyle: TextStyle(color: Color(0xffffd60a))),
+              style: TextStyle(
+                color: Color(0xffffffff),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                child: TextField(
-                  controller: passwordController,
-                  decoration: InputDecoration(
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: TextField(
+                controller: passwordController,
+                decoration: InputDecoration(
                     border: InputBorder.none,
                     filled: true,
                     fillColor: Color(0xbb555555),
                     labelText: "Password",
-                    labelStyle: TextStyle(color: Color(0xffffd60a))
-                  ),
-                  obscureText: true,
-                  style: TextStyle(
-                    color: Color(0xffffffff),
-                  ),
+                    labelStyle: TextStyle(color: Color(0xffffd60a))),
+                obscureText: true,
+                style: TextStyle(
+                  color: Color(0xffffffff),
                 ),
               ),
 
@@ -118,6 +117,7 @@ class LoginScreen extends StatelessWidget {
             ],
           ),
         ),
+      ),
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_banking_app/services_screen.dart';
 
+
 void main() {
   runApp(const MyApp());
 }
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         canvasColor: const Color(0xff000814),
       ),
       home: const ServicesScreen(),
+
       debugShowCheckedModeBanner: false,
     );
   }

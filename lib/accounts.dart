@@ -8,17 +8,16 @@ import 'package:path_provider/path_provider.dart';
 //  return await rootBundle.loadString("assets/accounts.txt");
 //}
 
+Future<String> get _localPath async {
+  final directory = await getApplicationDocumentsDirectory();
 
-  Future<String> get _localPath async {
-    final directory = await getApplicationDocumentsDirectory();
+  return directory.path;
+}
 
-    return directory.path;
-  }
-
-  Future<File> get _localFile async {
-    final path = await _localPath;
-    return File('$path/accounts.txt');
-  }
+Future<File> get _localFile async {
+  final path = await _localPath;
+  return File('$path/accounts.txt');
+}
 
 Future<File> balanceTransfer() async {
   final file = await _localFile;
@@ -29,9 +28,7 @@ Future<File> balanceTransfer() async {
   return file.writeAsString("admin admin 10000 0");
 }
 
-
-Future<String> getFile() async
-{
+Future<String> getFile() async {
   final file = await _localFile;
 
   String content = await file.readAsString();
