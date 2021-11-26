@@ -7,6 +7,25 @@ class TransferMoneySuccess extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: Padding(
+        padding: EdgeInsets.all(20),
+        child: Column(
+          children: [
+            Align(
+              alignment: AlignmentDirectional.center,
+              child: Text(
+                'Money transfer Success',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            Align(
+              alignment: AlignmentDirectional.center,
+              child: ElevatedButton(onPressed: () {}, child: Text('Back')),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
