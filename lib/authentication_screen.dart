@@ -5,7 +5,7 @@ import 'package:flutter/painting.dart';
 import 'package:mobile_banking_app/login_screen.dart';
 
 class AuthenticationScreen extends StatefulWidget {
-  List<int>  balance;
+  List<double>  balance;
   AuthenticationScreen(this.balance, {Key? key}) : super(key: key);
 
   @override
@@ -27,7 +27,7 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                 color: Colors.yellow,
                 size: 25,
               ),
-              onPressed: () => Navigator.push(
+              onPressed: () => Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => LoginScreen(widget.balance)),
               ),

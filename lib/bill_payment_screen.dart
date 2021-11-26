@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_banking_app/splash_screen.dart';
 
+import 'dashboard.dart';
+
 // ignore: must_be_immutable
 class BillPaymentScreen extends StatefulWidget {
   String merchantName;
-  List<int> balance;
+  List<double> balance;
   BillPaymentScreen(this.merchantName, this.balance,{ Key? key }) : super(key: key);
 
   @override
@@ -66,14 +68,43 @@ class _BillPaymentScreenState extends State<BillPaymentScreen> {
           ),
           
           ElevatedButton(onPressed: (){
-            if(int.parse(amountController.text)> balance[0]+balance[1])
+            if(double.parse(amountController.text)<= balance[0]+balance[1]) //checks if amount is smaller than balance
             {
-
+              if (accountNumController.text.length == 12) //checks is account number is exactly 12 characters
+              {
+                if(accountNameController.text.length > 0) 
+                {
+                  if(true)//admin1 card is chosen
+                  {
+                    double diff = balance[0] - double.parse(amountController.text);
+                    balance[0] = diff;
+                    balance[2] = double.parse(amountController.text);
+                  }
+                  else//admin2 card is chosen
+                  {
+                    double diff = balance[1] - double.parse(amountController.text);
+                    balance[1] = diff;
+                    balance[2] = double.parse(amountController.text);
+                  }
+                  Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => Dashboard(balance)));
+                }
+                else 
+                {
+                  //snackbar about blank name
+                }
+              }
+              else
+              {
+                //snack bar about not enough characters
+              }
             }
             else
             {
-
+              //insert snack bar
             }
+    
 
           }, child: const Text("Confirm"))
         ],

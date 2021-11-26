@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:mobile_banking_app/authentication_screen.dart';
 import 'package:flutter/material.dart';
 
-List<int> balance = [75000, 25000, 0]; 
+List<double> balance = [75000, 25000, 0]; 
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);

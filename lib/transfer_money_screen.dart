@@ -6,7 +6,7 @@ import 'package:mobile_banking_app/transfer_money_success_page.dart';
 import 'dashboard.dart';
 
 class TransferMoneyScreen extends StatelessWidget {
-  List<int> balance;
+  List<double> balance;
   TransferMoneyScreen(this.balance, {Key? key})
       : super(key: key);
 
@@ -30,7 +30,7 @@ class TransferMoneyScreen extends StatelessWidget {
                     color: Colors.white,
                   ),
                   onPressed: () {
-                    Navigator.push(
+                    Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
                           builder: (context) => Dashboard(balance)),

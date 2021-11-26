@@ -8,7 +8,7 @@ import 'bill_payment_screen.dart';
 
 class BillingScreen extends StatefulWidget {
   final int service;
-  List<int> balance;
+  List<double> balance;
   BillingScreen(this.service, this.balance, {Key? key}) : super(key: key);
 
   @override
@@ -37,7 +37,7 @@ class _BillingScreenState extends State<BillingScreen> {
                     color: Colors.white,
                   ),
                   onPressed: () {
-                    Navigator.push(
+                    Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
                           builder: (context) => ServicesScreen(balance)),
@@ -357,8 +357,8 @@ List<List> merchants = [
   ]
 ];
 
-void payService(String merchantName, BuildContext context, List<int> balance) {
-  Navigator.push(
+void payService(String merchantName, BuildContext context, List<double> balance) {
+  Navigator.pushReplacement(
     context,
     MaterialPageRoute(
         builder: (context) => BillPaymentScreen(merchantName, balance)),

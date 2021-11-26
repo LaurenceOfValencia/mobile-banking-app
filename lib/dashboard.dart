@@ -6,7 +6,7 @@ import 'package:mobile_banking_app/services_screen.dart';
 import 'package:mobile_banking_app/transfer_money_screen.dart';
 
 class Dashboard extends StatefulWidget {
-  List<int> balance;
+  List<double> balance;
   Dashboard(this.balance, {Key? key}) : super(key: key);
 
   @override
@@ -34,7 +34,7 @@ class _DashboardState extends State<Dashboard> {
                     ),
                     IconButton(
                         onPressed: () {
-                          Navigator.push(
+                          Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
@@ -124,7 +124,7 @@ class _DashboardState extends State<Dashboard> {
                       // ignore: avoid_print
                       child: IconButton(
                         onPressed: () {
-                          Navigator.push(
+                          Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => TransferMoneyScreen(
@@ -144,7 +144,7 @@ class _DashboardState extends State<Dashboard> {
                       ),
                       child: IconButton(
                         onPressed: () {
-                          Navigator.push(
+                          Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
