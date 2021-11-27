@@ -157,6 +157,7 @@ class TransferMoneyConfirmation extends StatelessWidget {
                   balance[int.parse(transactionDetails[0]) - 1] -=
                       double.parse(transactionDetails[2]);
                   balance[2] += double.parse(transactionDetails[2]);
+                  balance[3]++;
 
                   Navigator.pushReplacement(
                     context,

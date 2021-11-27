@@ -85,9 +85,9 @@ class _TransferMoneySuccessState extends State<TransferMoneySuccess> {
                 children: <Widget>[
                   Container(
                     height: 50,
-                    child: const Align(
+                    child: Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('Transaction Number: ')),
+                        child: Text('Transaction Number: ARXKL02' + (balance[3].toInt() % 8).toString() + "B3SA72" + balance[3].toString())),
                   ),
                   Container(
                     height: 50,

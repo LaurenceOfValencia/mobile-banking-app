@@ -146,6 +146,7 @@ class _BillPaymentScreenState extends State<BillPaymentScreen> {
                       if(double.parse(amountController.text) <= balance[int.parse(dropValue.split(".")[0])-1]){
                         balance[int.parse(dropValue.split(".")[0])-1] -= double.parse(amountController.text);
                         balance[2] += double.parse(amountController.text);
+                        balance[3]++;
 
                         Navigator.push(
                           context,
