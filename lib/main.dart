@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.yellow,
         canvasColor: const Color(0xff000814),
       ),
-      home: TransferMoneyScreen(balance),
+      home: SplashScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
