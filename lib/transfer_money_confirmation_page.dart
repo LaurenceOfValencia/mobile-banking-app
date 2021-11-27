@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_banking_app/splash_screen.dart';
 import 'package:mobile_banking_app/transfer_money_screen.dart';
+import 'package:mobile_banking_app/transfer_money_success.dart';
 
 class TransferMoneyConfirmation extends StatelessWidget {
   const TransferMoneyConfirmation({Key? key}) : super(key: key);
@@ -142,7 +143,7 @@ class TransferMoneyConfirmation extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => TransferMoneyConfirmation()),
+                        builder: (context) => TransferMoneySuccess()),
                   );
                 },
                 child: Text(

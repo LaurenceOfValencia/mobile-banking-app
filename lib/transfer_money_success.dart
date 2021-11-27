@@ -60,7 +60,7 @@ class TransferMoneySuccess extends StatelessWidget {
               ),
             ),
             Container(
-              height: 190,
+              height: 150,
               width: 350,
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -74,57 +74,13 @@ class TransferMoneySuccess extends StatelessWidget {
                     height: 50,
                     child: const Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('Transfer From')),
+                        child: Text('Transaction Number: ')),
                   ),
                   Container(
                     height: 50,
                     child: const Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('Card Used: ')),
-                  ),
-                  Container(
-                    height: 50,
-                    child: const Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text('Amount:')),
-                  ),
-                ],
-              ),
-            ),
-            const Divider(
-              color: Color(0xFFFFD60A),
-              indent: 20,
-              endIndent: 20,
-              thickness: 1,
-            ),
-            Container(
-              height: 190,
-              width: 350,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border.all(),
-                borderRadius: BorderRadius.all(Radius.circular(20)),
-              ),
-              child: ListView(
-                padding: const EdgeInsets.all(10),
-                children: <Widget>[
-                  Container(
-                    height: 50,
-                    child: const Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text('Transfer To ')),
-                  ),
-                  Container(
-                    height: 50,
-                    child: const Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text('Account Number: ')),
-                  ),
-                  Container(
-                    height: 50,
-                    child: const Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text('Account Name: ')),
+                        child: Text('Remaining Balance on card:')),
                   ),
                 ],
               ),
