@@ -1,44 +1,42 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_banking_app/splash_screen.dart';
-import 'package:mobile_banking_app/transfer_money_success_page.dart';
+import 'package:mobile_banking_app/transfer_money_confirmation_page.dart';
 
 import 'dashboard.dart';
 
 class TransferMoneyScreen extends StatelessWidget {
   List<int> balance;
-  TransferMoneyScreen(this.balance, {Key? key})
-      : super(key: key);
+  TransferMoneyScreen(this.balance, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-            title: const Text(
-              "Transfer Money",
-              style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.w900),
-            ),
-            elevation: 0,
-            backgroundColor: const Color(0xff000814),
-            leading: Builder(
-              builder: (BuildContext context) {
-                return IconButton(
-                  icon: const Icon(
-                    Icons.arrow_back,
-                    color: Colors.white,
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Dashboard(balance)),
-                    );
-                  }, //link back to prev page
-                );
-              },
-            )),
+          title: const Text(
+            "Transfer Money",
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w900),
+          ),
+          elevation: 0,
+          backgroundColor: const Color(0xff000814),
+          leading: Builder(
+            builder: (BuildContext context) {
+              return IconButton(
+                icon: const Icon(
+                  Icons.arrow_back,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Dashboard(balance)),
+                  );
+                }, //link back to prev page
+              );
+            },
+          ),
+        ),
         body: SingleChildScrollView(
           child: Column(
             // ignore: prefer_const_literals_to_create_immutables
@@ -88,6 +86,7 @@ class TransferMoneyScreen extends StatelessWidget {
                   ),
                 ],
               ),
+              /*
               SizedBox(
                 height: 200,
                 child: ListView(
@@ -104,6 +103,32 @@ class TransferMoneyScreen extends StatelessWidget {
                         cardHolder: "Admin2",
                         cardNumber: "XXXX XXXX XXXX 1373"),
                   ],
+                ),
+              ),
+              */
+              Container(
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 10),
+                    child: Theme(
+                      data:
+                          Theme.of(context).copyWith(canvasColor: Colors.white),
+                      child: Container(
+                        color: Colors.white,
+                        child: DropdownButton<String>(
+                          items:
+                              <String>['A', 'B', 'C', 'D'].map((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                          onChanged: (_) {},
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               ),
               const Divider(
@@ -137,21 +162,6 @@ class TransferMoneyScreen extends StatelessWidget {
                         cursorColor: Color(0xff003566),
                         decoration: InputDecoration(
                           labelText: 'Amount',
-                          labelStyle: TextStyle(color: Color(0xFF003566)),
-                          fillColor: Colors.white,
-                          filled: true,
-                          contentPadding: EdgeInsets.all(10),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Flexible(
-                    child: Padding(
-                      padding: EdgeInsets.all(10),
-                      child: TextField(
-                        cursorColor: Color(0xff003566),
-                        decoration: InputDecoration(
-                          labelText: 'Currency',
                           labelStyle: TextStyle(color: Color(0xFF003566)),
                           fillColor: Colors.white,
                           filled: true,
@@ -197,7 +207,8 @@ class TransferMoneyScreen extends StatelessWidget {
                 onPressed: () => Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const TransferMoneySuccess())),
+                        builder: (context) =>
+                            const TransferMoneyConfirmation())),
                 child: const Text('Proceed'),
               ),
             ],
