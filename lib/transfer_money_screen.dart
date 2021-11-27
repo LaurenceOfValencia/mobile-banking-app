@@ -117,8 +117,7 @@ class TransferMoneyScreen extends StatelessWidget {
                       child: Container(
                         color: Colors.white,
                         child: DropdownButton<String>(
-                          items:
-                              <String>['A', 'B', 'C', 'D'].map((String value) {
+                          items: <String>['Card1', 'Card2'].map((String value) {
                             return DropdownMenuItem<String>(
                               value: value,
                               child: Text(value),
