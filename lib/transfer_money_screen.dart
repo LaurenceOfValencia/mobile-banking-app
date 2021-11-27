@@ -173,6 +173,7 @@ class _TransferMoneyScreenState extends State<TransferMoneyScreen> {
                     child: Padding(
                       padding: const EdgeInsets.all(10),
                       child: TextField(
+                        keyboardType: TextInputType.number,
                         controller: amountController,
                         cursorColor: const Color(0xff003566),
                         decoration: const InputDecoration(
@@ -206,7 +207,6 @@ class _TransferMoneyScreenState extends State<TransferMoneyScreen> {
               Padding(
                 padding:  const EdgeInsets.all(10),
                 child:  TextField(
-                  keyboardType: TextInputType.number,
                   controller: accountNumController,
                   cursorColor: const Color(0xff003566),
                   maxLength: 12,
