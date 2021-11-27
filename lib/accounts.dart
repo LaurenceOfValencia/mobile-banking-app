@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:io';
 
-
 import 'package:path_provider/path_provider.dart';
 
 //Future<String> loadAsset() async {
@@ -38,10 +37,9 @@ Future<String> getFile() async {
 Future<List<String>> getAccount() async {
   List<String> accounts = (await getFile()).split(" ");
 
-  if (accounts.isEmpty)
-  {
-       balanceTransfer();
-       List<String> accounts = (await getFile()).split(" ");
+  if (accounts.isEmpty) {
+    balanceTransfer();
+    List<String> accounts = (await getFile()).split(" ");
   }
 
   return accounts;

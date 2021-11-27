@@ -1,11 +1,12 @@
-// ignore_for_file: unnecessary_new
+// ignore_for_file: unnecessary_new, must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:mobile_banking_app/login_screen.dart';
 
 class AuthenticationScreen extends StatefulWidget {
-  const AuthenticationScreen({Key? key}) : super(key: key);
+  List<double>  balance;
+  AuthenticationScreen(this.balance, {Key? key}) : super(key: key);
 
   @override
   _AuthenticationScreenState createState() => _AuthenticationScreenState();
@@ -26,9 +27,9 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                 color: Colors.yellow,
                 size: 25,
               ),
-              onPressed: () => Navigator.push(
+              onPressed: () => Navigator.push( 
                 context,
-                MaterialPageRoute(builder: (context) => LoginScreen()),
+                MaterialPageRoute(builder: (context) => LoginScreen(widget.balance)),
               ),
               label: const Text('Login'),
               style: ElevatedButton.styleFrom(
