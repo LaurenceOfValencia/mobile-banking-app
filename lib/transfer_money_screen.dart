@@ -1,25 +1,35 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_banking_app/splash_screen.dart';
 import 'package:mobile_banking_app/transfer_money_confirmation_page.dart';
 
 import 'dashboard.dart';
 
-String dropValue ='1. Card1 - Php' + balance[0].toString();
+String dropValue ='1. Card1';
 List<String> transactionDetails = ['card1', 'acount number', 'amount'];
 
 TextEditingController accountNumController = TextEditingController();
 TextEditingController amountController = TextEditingController();
+final number = ValueNotifier(0);
 
 class TransferMoneyScreen extends StatefulWidget {
   List<double> balance;
   TransferMoneyScreen(this.balance, {Key? key}): super(key: key);
+
+  
+
 
   @override
   State<TransferMoneyScreen> createState() => _TransferMoneyScreenState();
 }
 
 class _TransferMoneyScreenState extends State<TransferMoneyScreen> {
+
+  ValueNotifier<int> number = ValueNotifier(0);
+
+  //_TransferMoneyScreenState(this.number);
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -118,7 +128,7 @@ class _TransferMoneyScreenState extends State<TransferMoneyScreen> {
                 ),
               ),
               */
-              Container(
+              /*Container(
                 child: Align(
                   alignment: Alignment.topLeft,
                   child: Padding(
@@ -130,10 +140,42 @@ class _TransferMoneyScreenState extends State<TransferMoneyScreen> {
                         color: Colors.white,
                         child: DropdownButton<String>(
                           value: dropValue,
-                          items: <String>[
-                            '1. Card1 - Php' + widget.balance[0].toString(),
-                             '2. Card2 - Php' + widget.balance[1].toString()
-                             ].map((String value) {
+                          isExpanded: true,
+                          items: <String>['1. Card1','2. Card2'].map((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              dropValue = newValue!;
+                              number.value = newValue;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),*/
+
+              //Text("Current Balance: Php ").,
+
+              ValueListenableBuilder(
+                valueListenable: number,
+                child: Icon(Icons.ac_unit),
+                builder: (BuildContext context, int test, Widget? child){
+                  return Column(
+                    children: [
+                      Theme( data:
+                      Theme.of(context).copyWith(canvasColor: Colors.white),
+                      child: Container(
+                        color: Colors.white,
+                        child: DropdownButton<String>(
+                          value: dropValue,
+                          isExpanded: true,
+                          items: <String>['1. Card1','2. Card2'].map((String value) {
                             return DropdownMenuItem<String>(
                               value: value,
                               child: Text(value),
@@ -147,9 +189,13 @@ class _TransferMoneyScreenState extends State<TransferMoneyScreen> {
                         ),
                       ),
                     ),
-                  ),
-                ),
+                      Text("Card Balance: Php " + balance[int.parse(dropValue.split(".")[0])-1].toString(),
+                      style: TextStyle(color: Color(0xffffffff)),),
+                    ],
+                    );
+                },
               ),
+              
               const Divider(
                 color: Color(0xFFFFD60A),
                 indent: 20,

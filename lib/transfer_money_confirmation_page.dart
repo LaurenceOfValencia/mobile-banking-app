@@ -1,7 +1,5 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'dart:core';
-
 import 'package:flutter/material.dart';
 import 'package:mobile_banking_app/splash_screen.dart';
 import 'package:mobile_banking_app/transfer_money_screen.dart';
