@@ -158,7 +158,7 @@ class TransferMoneyConfirmation extends StatelessWidget {
                       double.parse(transactionDetails[2]);
                   balance[2] += double.parse(transactionDetails[2]);
 
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
                         builder: (context) =>

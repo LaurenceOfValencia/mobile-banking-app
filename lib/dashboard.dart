@@ -124,7 +124,7 @@ class _DashboardState extends State<Dashboard> {
                       // ignore: avoid_print
                       child: IconButton(
                         onPressed: () {
-                          Navigator.pushReplacement(
+                          Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
@@ -144,7 +144,7 @@ class _DashboardState extends State<Dashboard> {
                       ),
                       child: IconButton(
                         onPressed: () {
-                          Navigator.pushReplacement(
+                          Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>

@@ -108,59 +108,6 @@ class _TransferMoneyScreenState extends State<TransferMoneyScreen> {
                   ),
                 ],
               ),
-              /*
-              SizedBox(
-                height: 200,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: [
-                    _buildCreditCard(
-                        color: const Color(0xFFffa047),
-                        cardExpiration: "08/2022",
-                        cardHolder: "Admin1",
-                        cardNumber: "XXXX XXXX XXXX 9742"),
-                    _buildCreditCard(
-                        color: const Color(0xFF0029f5),
-                        cardExpiration: "08/2022",
-                        cardHolder: "Admin2",
-                        cardNumber: "XXXX XXXX XXXX 1373"),
-                  ],
-                ),
-              ),
-              */
-              /*Container(
-                child: Align(
-                  alignment: Alignment.topLeft,
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 10),
-                    child: Theme(
-                      data:
-                          Theme.of(context).copyWith(canvasColor: Colors.white),
-                      child: Container(
-                        color: Colors.white,
-                        child: DropdownButton<String>(
-                          value: dropValue,
-                          isExpanded: true,
-                          items: <String>['1. Card1','2. Card2'].map((String value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(value),
-                            );
-                          }).toList(),
-                          onChanged: (String? newValue) {
-                            setState(() {
-                              dropValue = newValue!;
-                              number.value = newValue;
-                            });
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),*/
-
-              //Text("Current Balance: Php ").,
 
               ValueListenableBuilder(
                 valueListenable: number,
@@ -257,6 +204,7 @@ class _TransferMoneyScreenState extends State<TransferMoneyScreen> {
               Padding(
                 padding:  EdgeInsets.all(10),
                 child:  TextField(
+                  keyboardType: TextInputType.number,
                   controller: accountNumController,
                   cursorColor: Color(0xff003566),
                   maxLength: 12,

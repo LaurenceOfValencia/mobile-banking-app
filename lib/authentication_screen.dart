@@ -27,7 +27,7 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                 color: Colors.yellow,
                 size: 25,
               ),
-              onPressed: () => Navigator.pushReplacement(
+              onPressed: () => Navigator.push( 
                 context,
                 MaterialPageRoute(builder: (context) => LoginScreen(widget.balance)),
               ),

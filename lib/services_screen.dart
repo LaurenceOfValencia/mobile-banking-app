@@ -29,7 +29,7 @@ class ServicesScreen extends StatelessWidget {
                   color: Colors.white,
                 ),
                 onPressed: () {
-                  Navigator.pushReplacement(
+                  Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => Dashboard(balance)),
                   );
@@ -501,7 +501,7 @@ class ServicesScreen extends StatelessWidget {
 }
 
 void pickMerchant(int service, List<double> balance, BuildContext context) {
-  Navigator.pushReplacement(
+  Navigator.push(
     context,
     MaterialPageRoute(builder: (context) => BillingScreen(service, balance)),
   );

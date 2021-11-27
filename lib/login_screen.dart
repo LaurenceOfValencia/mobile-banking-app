@@ -67,7 +67,7 @@ class LoginScreen extends StatelessWidget {
                     onPressed: () {
                       if ("admin".compareTo(usernameController.text) == 0 && "admin".compareTo(passwordController.text) == 0)
                       {
-                        Navigator.pushReplacement(
+                        Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => Dashboard(balance)),
                         );
@@ -94,7 +94,7 @@ class LoginScreen extends StatelessWidget {
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {
-                        Navigator.pushReplacement(
+                        Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => AuthenticationScreen(balance)),
                         );

@@ -102,6 +102,7 @@ class _BillPaymentScreenState extends State<BillPaymentScreen> {
               ),
 
             TextField(
+              keyboardType: TextInputType.number,
               maxLength: 12,
               controller: accountNumController,
               decoration: InputDecoration(

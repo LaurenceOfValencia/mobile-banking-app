@@ -95,7 +95,7 @@ class _TransferMoneySuccessState extends State<TransferMoneySuccess> {
             ),
             ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(builder: (context) => Dashboard(balance)),
                   );

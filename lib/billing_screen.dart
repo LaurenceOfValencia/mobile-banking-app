@@ -37,7 +37,7 @@ class _BillingScreenState extends State<BillingScreen> {
                     color: Colors.white,
                   ),
                   onPressed: () {
-                    Navigator.pushReplacement(
+                    Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => ServicesScreen(balance)),
@@ -358,7 +358,7 @@ List<List> merchants = [
 ];
 
 void payService(String merchantName, BuildContext context, List<double> balance) {
-  Navigator.pushReplacement(
+  Navigator.push(
     context,
     MaterialPageRoute(
         builder: (context) => BillPaymentScreen(merchantName, balance)),
