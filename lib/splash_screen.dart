@@ -2,6 +2,8 @@ import 'dart:async';
 import 'package:mobile_banking_app/authentication_screen.dart';
 import 'package:flutter/material.dart';
 
+List<double> balance = [75000, 25000, 0, 1]; 
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
@@ -14,11 +16,11 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(
-        const Duration(seconds: 5),
+        const Duration(seconds: 4),
         () => Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-                builder: (context) => const AuthenticationScreen())));
+                builder: (context) => AuthenticationScreen(balance))));
   }
 
   @override
