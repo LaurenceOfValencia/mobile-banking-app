@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:mobile_banking_app/dashboard.dart';
 import 'package:mobile_banking_app/splash_screen.dart';
@@ -17,7 +19,7 @@ class _TransferMoneySuccessState extends State<TransferMoneySuccess> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF000814),
+        backgroundColor: const Color(0xFF000814),
         leading: Builder(
           builder: (BuildContext context) {
             return IconButton(
@@ -78,18 +80,18 @@ class _TransferMoneySuccessState extends State<TransferMoneySuccess> {
               decoration: BoxDecoration(
                 color: Colors.white,
                 border: Border.all(),
-                borderRadius: BorderRadius.all(Radius.circular(20)),
+                borderRadius: const BorderRadius.all(Radius.circular(20)),
               ),
               child: ListView(
                 padding: const EdgeInsets.all(10),
                 children: <Widget>[
-                  Container(
+                  SizedBox(
                     height: 50,
                     child: Align(
                         alignment: Alignment.centerLeft,
                         child: Text('Transaction Number: ARXKL02' + (balance[3].toInt() % 8).toString() + "B3SA72" + balance[3].toInt().toString())),
                   ),
-                  Container(
+                  SizedBox(
                     height: 50,
                     child: Align(
                         alignment: Alignment.centerLeft,
@@ -105,7 +107,7 @@ class _TransferMoneySuccessState extends State<TransferMoneySuccess> {
                     MaterialPageRoute(builder: (context) => Dashboard(balance)),
                   );
                 },
-                child: Text(
+                child: const Text(
                   'Home',
                 ))
           ],
