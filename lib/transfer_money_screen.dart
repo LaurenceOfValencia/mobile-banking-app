@@ -5,46 +5,26 @@ import 'package:mobile_banking_app/transfer_money_confirmation_page.dart';
 
 import 'dashboard.dart';
 
-class TransferMoneyScreen extends StatelessWidget {
-<<<<<<< HEAD
-  List<int> balance;
-  TransferMoneyScreen(this.balance, {Key? key}) : super(key: key);
-=======
-  List<double> balance;
-  TransferMoneyScreen(this.balance, {Key? key})
-      : super(key: key);
->>>>>>> no-read-or-write-ver
+String dropValue ='1. Card1 - Php' + balance[0].toString();
+List<String> transactionDetails = ['card1', 'acount number', 'amount'];
 
+TextEditingController accountNumController = TextEditingController();
+TextEditingController amountController = TextEditingController();
+
+class TransferMoneyScreen extends StatefulWidget {
+  List<double> balance;
+  TransferMoneyScreen(this.balance, {Key? key}): super(key: key);
+
+  @override
+  State<TransferMoneyScreen> createState() => _TransferMoneyScreenState();
+}
+
+class _TransferMoneyScreenState extends State<TransferMoneyScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-<<<<<<< HEAD
-          title: const Text(
-            "Transfer Money",
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w900),
-          ),
-          elevation: 0,
-          backgroundColor: const Color(0xff000814),
-          leading: Builder(
-            builder: (BuildContext context) {
-              return IconButton(
-                icon: const Icon(
-                  Icons.arrow_back,
-                  color: Colors.white,
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Dashboard(balance)),
-                  );
-                }, //link back to prev page
-              );
-            },
-          ),
-        ),
-=======
             title: const Text(
               "Transfer Money",
               style:
@@ -63,13 +43,12 @@ class TransferMoneyScreen extends StatelessWidget {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => Dashboard(balance)),
+                          builder: (context) => Dashboard(widget.balance)),
                     );
                   }, //link back to prev page
                 );
               },
             )),
->>>>>>> no-read-or-write-ver
         body: SingleChildScrollView(
           child: Column(
             // ignore: prefer_const_literals_to_create_immutables
@@ -150,13 +129,21 @@ class TransferMoneyScreen extends StatelessWidget {
                       child: Container(
                         color: Colors.white,
                         child: DropdownButton<String>(
-                          items: <String>['Card1', 'Card2'].map((String value) {
+                          value: dropValue,
+                          items: <String>[
+                            '1. Card1 - Php' + widget.balance[0].toString(),
+                             '2. Card2 - Php' + widget.balance[1].toString()
+                             ].map((String value) {
                             return DropdownMenuItem<String>(
                               value: value,
                               child: Text(value),
                             );
                           }).toList(),
-                          onChanged: (_) {},
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              dropValue = newValue!;
+                            });
+                          },
                         ),
                       ),
                     ),
@@ -186,11 +173,12 @@ class TransferMoneyScreen extends StatelessWidget {
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: const <Widget>[
+                children: <Widget>[
                   Flexible(
                     child: Padding(
                       padding: EdgeInsets.all(10),
                       child: TextField(
+                        controller: amountController,
                         cursorColor: Color(0xff003566),
                         decoration: InputDecoration(
                           labelText: 'Amount',
@@ -205,7 +193,7 @@ class TransferMoneyScreen extends StatelessWidget {
                 ],
               ),
               Column(
-                children: const <Widget>[
+                children: <Widget>[
                   Align(
                     alignment: Alignment.topLeft,
                     child: Padding(
@@ -221,8 +209,9 @@ class TransferMoneyScreen extends StatelessWidget {
               ),
               // ignore: prefer_const_constructors
               Padding(
-                padding: const EdgeInsets.all(10),
-                child: const TextField(
+                padding:  EdgeInsets.all(10),
+                child:  TextField(
+                  controller: accountNumController,
                   cursorColor: Color(0xff003566),
                   maxLength: 12,
                   decoration: InputDecoration(
@@ -236,11 +225,34 @@ class TransferMoneyScreen extends StatelessWidget {
               ),
 
               ElevatedButton(
-                onPressed: () => Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            const TransferMoneyConfirmation())),
+                onPressed: () { 
+                      String cardChosen = (dropValue.split("."))[0];
+
+                      if(amountController.text.isNotEmpty) {
+                        double amount = double.parse(amountController.text);
+                        if(accountNumController.text.length == 12){
+                          if(amount >= 200 && amount <= balance[int.parse(cardChosen)-1]){
+                            transactionDetails = [cardChosen, accountNumController.text, amount.toString()];
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => TransferMoneyConfirmation(widget.balance, transactionDetails)));
+                          }
+                          else{
+                            final snackBar = SnackBar(content: Text('Amount must be at least 200 and does not exceed card balance'));
+                            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                          }
+                        }
+                        else{
+                          final snackBar = SnackBar(content: Text('Account number must be 12 characters long'));
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        }
+                      }
+                      else{
+                        final snackBar = SnackBar(content: Text('Please fill in all the fields'));
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      }
+                            },
                 child: const Text('Proceed'),
               ),
             ],
@@ -295,7 +307,6 @@ class TransferMoneyScreen extends StatelessWidget {
     );
   }
 
-  // Build the top row containing logos
   Row _buildLogosBlock() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -314,7 +325,6 @@ class TransferMoneyScreen extends StatelessWidget {
     );
   }
 
-// Build Column containing the cardholder and expiration information
   Column _buildDetailsBlock(
       {@required String? label, @required String? value}) {
     return Column(

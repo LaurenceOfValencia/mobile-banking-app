@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_banking_app/dashboard.dart';
 import 'package:mobile_banking_app/splash_screen.dart';
+import 'package:mobile_banking_app/transfer_money_screen.dart';
 
-class TransferMoneySuccess extends StatelessWidget {
-  const TransferMoneySuccess({Key? key}) : super(key: key);
+class TransferMoneySuccess extends StatefulWidget {
+  List<double> balance;
+  List<String> transactionDetails;
+  TransferMoneySuccess(this.balance, this.transactionDetails, {Key? key}) : super(key: key);
 
+  @override
+  State<TransferMoneySuccess> createState() => _TransferMoneySuccessState();
+}
+
+class _TransferMoneySuccessState extends State<TransferMoneySuccess> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,9 +86,9 @@ class TransferMoneySuccess extends StatelessWidget {
                   ),
                   Container(
                     height: 50,
-                    child: const Align(
+                    child: Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('Remaining Balance on card:')),
+                        child: Text('Remaining Balance on card: Php' + balance[int.parse(transactionDetails[0])-1].toString())),
                   ),
                 ],
               ),

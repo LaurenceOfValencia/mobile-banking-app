@@ -6,7 +6,9 @@ import 'package:mobile_banking_app/transfer_money_screen.dart';
 import 'package:mobile_banking_app/transfer_money_success.dart';
 
 class TransferMoneyConfirmation extends StatelessWidget {
-  const TransferMoneyConfirmation({Key? key}) : super(key: key);
+  List<double>  balance;
+  List<String>  transactionDetails;
+  TransferMoneyConfirmation(this.balance, this.transactionDetails, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -81,21 +83,21 @@ class TransferMoneyConfirmation extends StatelessWidget {
                 children: <Widget>[
                   Container(
                     height: 50,
-                    child: const Align(
+                    child: Align(
                         alignment: Alignment.centerLeft,
                         child: Text('Transfer From')),
                   ),
                   Container(
                     height: 50,
-                    child: const Align(
+                    child: Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('Card Used: ')),
+                        child: Text('Card Used: Card' + transactionDetails[0])),
                   ),
                   Container(
                     height: 50,
-                    child: const Align(
+                    child:  Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('Amount:')),
+                        child: Text('Current Balance: ' + balance[int.parse(transactionDetails[0]) - 1].toString())),
                   ),
                 ],
               ),
@@ -119,31 +121,34 @@ class TransferMoneyConfirmation extends StatelessWidget {
                 children: <Widget>[
                   Container(
                     height: 50,
-                    child: const Align(
+                    child: Align(
                         alignment: Alignment.centerLeft,
                         child: Text('Transfer To ')),
                   ),
                   Container(
                     height: 50,
-                    child: const Align(
+                    child: Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('Account Number: ')),
+                        child: Text('Account Number: ' + transactionDetails[1])),
                   ),
                   Container(
                     height: 50,
-                    child: const Align(
+                    child: Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('Account Name: ')),
+                        child: Text('Amount: Php' + transactionDetails[2])),
                   ),
                 ],
               ),
             ),
             ElevatedButton(
                 onPressed: () {
+                  balance[int.parse(transactionDetails[0])-1] -= double.parse(transactionDetails[2]);
+                  balance[2] += double.parse(transactionDetails[2]);
+
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => TransferMoneySuccess()),
+                        builder: (context) => TransferMoneySuccess(balance, transactionDetails)),
                   );
                 },
                 child: Text(
