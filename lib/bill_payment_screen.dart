@@ -9,7 +9,8 @@ import 'dashboard.dart';
 class BillPaymentScreen extends StatefulWidget {
   String merchantName;
   List<double> balance;
-  BillPaymentScreen(this.merchantName, this.balance,{ Key? key }) : super(key: key);
+  BillPaymentScreen(this.merchantName, this.balance, {Key? key})
+      : super(key: key);
 
   @override
   _BillPaymentScreenState createState() => _BillPaymentScreenState();
@@ -26,7 +27,7 @@ class _BillPaymentScreenState extends State<BillPaymentScreen> {
         appBar: AppBar(
             backgroundColor: Color(0xFF000814),
             title: Text(
-              'Confirm',
+              'Payment',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Color(0xffFFC300),
@@ -64,11 +65,11 @@ class _BillPaymentScreenState extends State<BillPaymentScreen> {
               decoration: InputDecoration(
                   border: InputBorder.none,
                   filled: true,
-                  fillColor: const Color(0xbb555555),
+                  fillColor: Colors.white,
                   labelText: "Account Number",
-                  labelStyle: const TextStyle(color: Color(0xffffd60a))),
+                  labelStyle: const TextStyle(color: Color(0xff001D3D))),
               style: const TextStyle(
-                color: Color(0xffffffff),
+                color: Color(0xff001D3D),
               ),
             ),
             TextField(
@@ -76,9 +77,9 @@ class _BillPaymentScreenState extends State<BillPaymentScreen> {
               decoration: InputDecoration(
                   border: InputBorder.none,
                   filled: true,
-                  fillColor: Color(0xbb555555),
+                  fillColor: Colors.white,
                   labelText: "Account Name",
-                  labelStyle: TextStyle(color: Color(0xffffd60a))),
+                  labelStyle: TextStyle(color: Color(0xff001D3D))),
               style: TextStyle(
                 color: Color(0xffffffff),
               ),
@@ -88,9 +89,9 @@ class _BillPaymentScreenState extends State<BillPaymentScreen> {
               decoration: InputDecoration(
                   border: InputBorder.none,
                   filled: true,
-                  fillColor: Color(0xbb555555),
+                  fillColor: Colors.white,
                   labelText: "Amount to Pay",
-                  labelStyle: TextStyle(color: const Color(0xffffd60a))),
+                  labelStyle: TextStyle(color: const Color(0xff001D3D))),
               style: TextStyle(
                 color: const Color(0xffffffff),
               ),

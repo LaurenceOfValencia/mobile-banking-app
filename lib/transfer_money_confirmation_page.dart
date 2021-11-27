@@ -8,9 +8,10 @@ import 'package:mobile_banking_app/transfer_money_screen.dart';
 import 'package:mobile_banking_app/transfer_money_success.dart';
 
 class TransferMoneyConfirmation extends StatelessWidget {
-  List<double>  balance;
-  List<String>  transactionDetails;
-  TransferMoneyConfirmation(this.balance, this.transactionDetails, {Key? key}) : super(key: key);
+  List<double> balance;
+  List<String> transactionDetails;
+  TransferMoneyConfirmation(this.balance, this.transactionDetails, {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +88,11 @@ class TransferMoneyConfirmation extends StatelessWidget {
                     height: 50,
                     child: Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('Transfer From')),
+                        child: Text(
+                          'Transfer From',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w700, fontSize: 20),
+                        )),
                   ),
                   Container(
                     height: 50,
@@ -97,9 +102,11 @@ class TransferMoneyConfirmation extends StatelessWidget {
                   ),
                   Container(
                     height: 50,
-                    child:  Align(
+                    child: Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('Current Balance: ' + balance[int.parse(transactionDetails[0]) - 1].toString())),
+                        child: Text('Current Balance: ' +
+                            balance[int.parse(transactionDetails[0]) - 1]
+                                .toString())),
                   ),
                 ],
               ),
@@ -125,13 +132,18 @@ class TransferMoneyConfirmation extends StatelessWidget {
                     height: 50,
                     child: Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('Transfer To ')),
+                        child: Text(
+                          'Transfer To ',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w700, fontSize: 20),
+                        )),
                   ),
                   Container(
                     height: 50,
                     child: Align(
                         alignment: Alignment.centerLeft,
-                        child: Text('Account Number: ' + transactionDetails[1])),
+                        child:
+                            Text('Account Number: ' + transactionDetails[1])),
                   ),
                   Container(
                     height: 50,
@@ -144,13 +156,15 @@ class TransferMoneyConfirmation extends StatelessWidget {
             ),
             ElevatedButton(
                 onPressed: () {
-                  balance[int.parse(transactionDetails[0])-1] -= double.parse(transactionDetails[2]);
+                  balance[int.parse(transactionDetails[0]) - 1] -=
+                      double.parse(transactionDetails[2]);
                   balance[2] += double.parse(transactionDetails[2]);
 
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => TransferMoneySuccess(balance, transactionDetails)),
+                        builder: (context) =>
+                            TransferMoneySuccess(balance, transactionDetails)),
                   );
                 },
                 child: Text(
