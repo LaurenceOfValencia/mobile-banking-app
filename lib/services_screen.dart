@@ -6,7 +6,7 @@ import 'package:mobile_banking_app/billing_screen.dart';
 import 'package:mobile_banking_app/dashboard.dart';
 
 class ServicesScreen extends StatelessWidget {
-  List<int> balance;
+  List<double> balance;
   ServicesScreen(this.balance, {Key? key}) : super(key: key);
 
   @override
@@ -29,7 +29,7 @@ class ServicesScreen extends StatelessWidget {
                   color: Colors.white,
                 ),
                 onPressed: () {
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(builder: (context) => Dashboard(balance)),
                   );
@@ -500,8 +500,8 @@ class ServicesScreen extends StatelessWidget {
   }
 }
 
-void pickMerchant(int service, List<int> balance, BuildContext context) {
-  Navigator.push(
+void pickMerchant(int service, List<double> balance, BuildContext context) {
+  Navigator.pushReplacement(
     context,
     MaterialPageRoute(builder: (context) => BillingScreen(service, balance)),
   );
