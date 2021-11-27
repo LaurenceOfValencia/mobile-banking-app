@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:mobile_banking_app/billing_screen.dart';
 import 'package:mobile_banking_app/services_screen.dart';
 import 'package:mobile_banking_app/splash_screen.dart';
+import 'package:mobile_banking_app/transfer_money_screen.dart';
 
 import 'dashboard.dart';
+
+String dropValue ='1. Card1';
 
 // ignore: must_be_immutable
 class BillPaymentScreen extends StatefulWidget {
@@ -21,6 +24,10 @@ TextEditingController accountNameController = TextEditingController();
 TextEditingController amountController = TextEditingController();
 
 class _BillPaymentScreenState extends State<BillPaymentScreen> {
+
+  ValueNotifier<int> number = ValueNotifier(0);
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,6 +66,41 @@ class _BillPaymentScreenState extends State<BillPaymentScreen> {
                 style: const TextStyle(color: Color(0xffffffff), fontSize: 40),
               ),
             ),
+
+            ValueListenableBuilder(
+                valueListenable: number,
+                child: Icon(Icons.ac_unit),
+                builder: (BuildContext context, int test, Widget? child){
+                  return Column(
+                    children: [
+                      Theme( data:
+                      Theme.of(context).copyWith(canvasColor: Colors.white),
+                      child: Container(
+                        color: Colors.white,
+                        child: DropdownButton<String>(
+                          value: dropValue,
+                          isExpanded: true,
+                          items: <String>['1. Card1','2. Card2'].map((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              dropValue = newValue!;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                      Text("Card Balance: Php " + balance[int.parse(dropValue.split(".")[0])-1].toString(),
+                      style: TextStyle(color: Color(0xffffffff)),),
+                    ],
+                    );
+                },
+              ),
+
             TextField(
               maxLength: 12,
               controller: accountNumController,
@@ -81,7 +123,7 @@ class _BillPaymentScreenState extends State<BillPaymentScreen> {
                   labelText: "Account Name",
                   labelStyle: TextStyle(color: Color(0xff001D3D))),
               style: TextStyle(
-                color: Color(0xffffffff),
+                color: Color(0xff000000),
               ),
             ),
             TextField(
@@ -93,14 +135,36 @@ class _BillPaymentScreenState extends State<BillPaymentScreen> {
                   labelText: "Amount to Pay",
                   labelStyle: TextStyle(color: const Color(0xff001D3D))),
               style: TextStyle(
-                color: const Color(0xffffffff),
+                color: const Color(0xff000000),
               ),
             ),
             ElevatedButton(
-                onPressed: () {
-                  if (int.parse(amountController.text) >
-                      balance[0] + balance[1]) {
-                  } else {}
+                onPressed: () { 
+                  if (accountNameController.text.isNotEmpty) {
+                    if(accountNumController.text.length == 12){
+                      if(double.parse(amountController.text) <= balance[int.parse(dropValue.split(".")[0])-1]){
+                        balance[int.parse(dropValue.split(".")[0])-1] -= double.parse(amountController.text);
+                        balance[2] += double.parse(amountController.text);
+
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Dashboard(balance)),
+                        );
+                      }
+                      else{
+                        final snackBar = SnackBar(content: Text('Amount should not exceed card balance'));
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      }
+                    }
+                    else{
+                      final snackBar = SnackBar(content: Text('Account number must be 12 characters long'));
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    }
+                  } 
+                  else {
+                    final snackBar = SnackBar(content: Text('Please fill in all the fields'));
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  }
                 },
                 child: const Text("Confirm"))
           ],
