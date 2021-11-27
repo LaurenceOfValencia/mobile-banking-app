@@ -25,7 +25,12 @@ class _TransferMoneySuccessState extends State<TransferMoneySuccess> {
                 Icons.arrow_back,
                 color: Colors.white,
               ),
-              onPressed: () {}, //link back to prev page
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => Dashboard(balance)),
+                );
+              }, //link back to prev page
             );
           },
         ),
