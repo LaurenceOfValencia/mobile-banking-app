@@ -6,45 +6,14 @@ import 'package:mobile_banking_app/transfer_money_confirmation_page.dart';
 import 'dashboard.dart';
 
 class TransferMoneyScreen extends StatelessWidget {
-<<<<<<< HEAD
-  List<int> balance;
-  TransferMoneyScreen(this.balance, {Key? key}) : super(key: key);
-=======
   List<double> balance;
-  TransferMoneyScreen(this.balance, {Key? key})
-      : super(key: key);
->>>>>>> no-read-or-write-ver
+  TransferMoneyScreen(this.balance, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-<<<<<<< HEAD
-          title: const Text(
-            "Transfer Money",
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w900),
-          ),
-          elevation: 0,
-          backgroundColor: const Color(0xff000814),
-          leading: Builder(
-            builder: (BuildContext context) {
-              return IconButton(
-                icon: const Icon(
-                  Icons.arrow_back,
-                  color: Colors.white,
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Dashboard(balance)),
-                  );
-                }, //link back to prev page
-              );
-            },
-          ),
-        ),
-=======
             title: const Text(
               "Transfer Money",
               style:
@@ -69,7 +38,6 @@ class TransferMoneyScreen extends StatelessWidget {
                 );
               },
             )),
->>>>>>> no-read-or-write-ver
         body: SingleChildScrollView(
           child: Column(
             // ignore: prefer_const_literals_to_create_immutables
