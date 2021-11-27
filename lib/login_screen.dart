@@ -8,7 +8,7 @@ TextEditingController usernameController = TextEditingController();
 TextEditingController passwordController = TextEditingController();
 
 class LoginScreen extends StatelessWidget {
-  List<int> balance;
+  List<double> balance;
   LoginScreen(this.balance, { Key? key }) : super(key: key);
 
   @override
@@ -67,7 +67,7 @@ class LoginScreen extends StatelessWidget {
                     onPressed: () {
                       if ("admin".compareTo(usernameController.text) == 0 && "admin".compareTo(passwordController.text) == 0)
                       {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(builder: (context) => Dashboard(balance)),
                         );
@@ -94,7 +94,7 @@ class LoginScreen extends StatelessWidget {
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(builder: (context) => AuthenticationScreen(balance)),
                         );

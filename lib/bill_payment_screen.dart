@@ -3,12 +3,13 @@ import 'package:mobile_banking_app/billing_screen.dart';
 import 'package:mobile_banking_app/services_screen.dart';
 import 'package:mobile_banking_app/splash_screen.dart';
 
+import 'dashboard.dart';
+
 // ignore: must_be_immutable
 class BillPaymentScreen extends StatefulWidget {
   String merchantName;
-  List<int> balance;
-  BillPaymentScreen(this.merchantName, this.balance, {Key? key})
-      : super(key: key);
+  List<double> balance;
+  BillPaymentScreen(this.merchantName, this.balance,{ Key? key }) : super(key: key);
 
   @override
   _BillPaymentScreenState createState() => _BillPaymentScreenState();
