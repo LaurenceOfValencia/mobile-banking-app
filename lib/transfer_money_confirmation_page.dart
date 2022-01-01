@@ -1,7 +1,6 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:mobile_banking_app/splash_screen.dart';
 import 'package:mobile_banking_app/transfer_money_screen.dart';
 import 'package:mobile_banking_app/transfer_money_success.dart';
 
@@ -82,7 +81,7 @@ class TransferMoneyConfirmation extends StatelessWidget {
               child: ListView(
                 padding: const EdgeInsets.all(10),
                 children: <Widget>[
-                  Container(
+                  SizedBox(
                     height: 50,
                     child: Align(
                         alignment: Alignment.centerLeft,
@@ -92,13 +91,13 @@ class TransferMoneyConfirmation extends StatelessWidget {
                               fontWeight: FontWeight.w700, fontSize: 20),
                         )),
                   ),
-                  Container(
+                  SizedBox(
                     height: 50,
                     child: Align(
                         alignment: Alignment.centerLeft,
                         child: Text('Card Used: Card' + transactionDetails[0])),
                   ),
-                  Container(
+                  SizedBox(
                     height: 50,
                     child: Align(
                         alignment: Alignment.centerLeft,
@@ -126,7 +125,7 @@ class TransferMoneyConfirmation extends StatelessWidget {
               child: ListView(
                 padding: const EdgeInsets.all(10),
                 children: <Widget>[
-                  Container(
+                  SizedBox(
                     height: 50,
                     child: Align(
                         alignment: Alignment.centerLeft,
@@ -136,14 +135,14 @@ class TransferMoneyConfirmation extends StatelessWidget {
                               fontWeight: FontWeight.w700, fontSize: 20),
                         )),
                   ),
-                  Container(
+                  SizedBox(
                     height: 50,
                     child: Align(
                         alignment: Alignment.centerLeft,
                         child:
                             Text('Account Number: ' + transactionDetails[1])),
                   ),
-                  Container(
+                  SizedBox(
                     height: 50,
                     child: Align(
                         alignment: Alignment.centerLeft,
