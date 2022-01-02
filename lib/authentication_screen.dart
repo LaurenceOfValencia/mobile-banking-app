@@ -1,4 +1,5 @@
 // ignore_for_file: unnecessary_new, must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:mobile_banking_app/login_screen.dart';
@@ -45,7 +46,9 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                 size: 25,
               ),
               onPressed: () {
-                const snackBar = SnackBar(
+                // ignore: prefer_const_constructors
+                final snackBar = SnackBar(
+                    // ignore: prefer_const_constructors
                     content: Text(
                         "This functionality is not available for this demo"));
                 ScaffoldMessenger.of(context).showSnackBar(snackBar);
