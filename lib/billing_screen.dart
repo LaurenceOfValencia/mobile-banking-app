@@ -46,8 +46,7 @@ class _BillingScreenState extends State<BillingScreen> {
                 );
               },
             )),
-        body: //Text(merchants[widget.service][0], style: TextStyle(color: Colors.white)),
-            ListView(
+        body: ListView(
           children: <Widget>[
             Card(
               color: Color(0xff003566),
@@ -169,42 +168,6 @@ class _BillingScreenState extends State<BillingScreen> {
                 ),
               ),
             ),
-
-            /*
-          title: Text(merchants[widget.service][1]),
-          onTap: () =>
-              payService(merchants[widget.service][0], context, balance),
-        ),*/
-            /*SizedBox(width: double.infinity, height: 50,child: ElevatedButton( style: ButtonStyle(backgroundColor: MaterialStateProperty.all(const Color(0xff003566)), foregroundColor: MaterialStateProperty.all(const Color(0xffffffff)),),
-          onPressed: (){payService(merchants[widget.service][0],context, balance);}, child: Text(merchants[widget.service][0]),)),
-
-        SizedBox(width: double.infinity, height: 50,child: ElevatedButton( style: ButtonStyle(backgroundColor: MaterialStateProperty.all(const Color(0xff001D3D)), foregroundColor: MaterialStateProperty.all(const Color(0xffffffff)),),
-          onPressed: (){payService(merchants[widget.service][1],context , balance);}, child: Text(merchants[widget.service][1]),)),
-
-        SizedBox(width: double.infinity, height: 50,child: ElevatedButton( style: ButtonStyle(backgroundColor: MaterialStateProperty.all(const Color(0xff003566)), foregroundColor: MaterialStateProperty.all(const Color(0xffffffff)),),
-        onPressed: (){payService(merchants[widget.service][2],context,  balance);}, child: Text(merchants[widget.service][2]),)),
-
-        SizedBox(width: double.infinity, height: 50,child: ElevatedButton( style: ButtonStyle(backgroundColor: MaterialStateProperty.all(const Color(0xff001D3D)), foregroundColor: MaterialStateProperty.all(const Color(0xffffffff)),),
-          onPressed: (){payService(merchants[widget.service][3],context,  balance);}, child: Text(merchants[widget.service][3]),)),
-
-        SizedBox(width: double.infinity, height: 50,child: ElevatedButton( style: ButtonStyle(backgroundColor: MaterialStateProperty.all(const Color(0xff003566)), foregroundColor: MaterialStateProperty.all(const Color(0xffffffff)),),
-          onPressed: (){payService(merchants[widget.service][4],context,  balance);}, child: Text(merchants[widget.service][4]),)),
-
-        SizedBox(width: double.infinity, height: 50,child: ElevatedButton( style: ButtonStyle(backgroundColor: MaterialStateProperty.all(const Color(0xff001D3D)), foregroundColor: MaterialStateProperty.all(const Color(0xffffffff)),),
-          onPressed: (){payService(merchants[widget.service][5],context,  balance);}, child: Text(merchants[widget.service][5]),)),
-
-        SizedBox(width: double.infinity, height: 50,child: ElevatedButton( style: ButtonStyle(backgroundColor: MaterialStateProperty.all(const Color(0xff003566)), foregroundColor: MaterialStateProperty.all(const Color(0xffffffff)),),
-          onPressed: (){payService(merchants[widget.service][6],context,  balance);}, child: Text(merchants[widget.service][6]),)),
-
-        SizedBox(width: double.infinity, height: 50,child: ElevatedButton( style: ButtonStyle(backgroundColor: MaterialStateProperty.all(const Color(0xff001D3D)), foregroundColor: MaterialStateProperty.all(const Color(0xffffffff)),),
-          onPressed: (){payService(merchants[widget.service][7],context,  balance);}, child: Text(merchants[widget.service][7]),)),
-
-        SizedBox(width: double.infinity, height: 50,child: ElevatedButton( style: ButtonStyle(backgroundColor: MaterialStateProperty.all(const Color(0xff003566)), foregroundColor: MaterialStateProperty.all(const Color(0xffffffff)),),
-          onPressed: (){payService(merchants[widget.service][8],context,  balance);}, child: Text(merchants[widget.service][8]),)),
-
-        SizedBox(width: double.infinity, height: 50,child: ElevatedButton( style: ButtonStyle(backgroundColor: MaterialStateProperty.all(const Color(0xff001D3D)), foregroundColor: MaterialStateProperty.all(const Color(0xffffffff)),),
-          onPressed: (){payService(merchants[widget.service][9],context,  balance);}, child: Text(merchants[widget.service][9]),)),
-          */
           ],
         ));
   }
@@ -357,7 +320,8 @@ List<List> merchants = [
   ]
 ];
 
-void payService(String merchantName, BuildContext context, List<double> balance) {
+void payService(
+    String merchantName, BuildContext context, List<double> balance) {
   Navigator.push(
     context,
     MaterialPageRoute(
